@@ -1,6 +1,7 @@
 import * as React from "react";
 import Svg, { Path, type SvgProps  } from "react-native-svg";
-const SvgArrowLeft3 = (props: SvgProps) => (
+import { IconProps } from "./2User";
+const SvgArrowLeft3 = (props: IconProps) => (
   <Svg
     width={props.width || 24}
     height={props.height || 24}
@@ -16,7 +17,7 @@ const SvgArrowLeft3 = (props: SvgProps) => (
       clipRule="evenodd"
     />
     <Path
-      fill="#040415"
+      fill={props.color || "#040415"}
       fillRule="evenodd"
       d="M11.811 17.397a.7.7 0 0 1-.379-.109L3.914 12.55a.712.712 0 0 1 0-1.203l7.518-4.738a.71.71 0 0 1 .722-.02.71.71 0 0 1 .367.622v9.475a.71.71 0 0 1-.71.71"
       clipRule="evenodd"

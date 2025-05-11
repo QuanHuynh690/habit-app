@@ -1,15 +1,27 @@
 //import { Tabs, TabSlot, TabList, TabTrigger } from 'expo-router/ui';
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Button, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Tabs } from "expo-router";
+import React from "react";
+import {
+  Button,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import SvgHome1 from '@/components/ui/design-icons/Home1';
-import { Discovery, Medal, PlusCrFr, Profile } from '@/components/ui/design-icons';
+import { HapticTab } from "@/components/HapticTab";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import TabBarBackground from "@/components/ui/TabBarBackground";
+import { Colors } from "@/shared/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
+import SvgHome1 from "@/components/ui/design-icons/Home1";
+import {
+  Discovery,
+  Medal,
+  PlusCrFr,
+  Profile,
+} from "@/components/ui/design-icons";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -17,45 +29,43 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
         tabBarItemStyle: {
           //padding: 10,
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         },
         tabBarStyle: Platform.select({
           ios: {
             // Use a transparent background on iOS to show the blur effect
             height: 64,
-            backgroundColor: "white",
-            color: '#808080',
+            // backgroundColor: "white",
             bottom: 25,
             left: 16,
             right: 16,
-            position: 'absolute',
+            position: "absolute",
             borderRadius: 64,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            borderWidth:1
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+            borderWidth: 1,
           },
           default: {
             height: 64,
-            backgroundColor: "white",
-            color: '#808080',
+            // backgroundColor: "white",
             bottom: 25,
             left: 16,
             right: 16,
-            position: 'absolute',
+            position: "absolute",
             borderRadius: 64,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            borderWidth:1
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+            borderWidth: 1,
           },
         }),
       }}
@@ -63,27 +73,27 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: "Home",
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <SvgHome1 />,
-          tabBarActiveTintColor: 'red',
+          tabBarIcon: ({ color }) => <SvgHome1 color={color} />,
+          tabBarActiveTintColor: "#3843ff",
           tabBarIconStyle: {
-            height: '100%',
-            paddingHorizontal: 35
-          }
+            height: "100%",
+            paddingHorizontal: 35,
+          },
         }}
       />
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'Explore',
+          title: "Explore",
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <Discovery />,
-          tabBarActiveTintColor: 'red',
+          tabBarIcon: ({ color }) => <Discovery color={color} />,
+          tabBarActiveTintColor: "#3843ff",
           tabBarIconStyle: {
-            height: '100%',
-            paddingHorizontal: 35
-          }
+            height: "100%",
+            paddingHorizontal: 35,
+          },
         }}
       />
 
@@ -92,8 +102,8 @@ export default function TabLayout() {
         options={{
           tabBarButton: () => (
             <View>
-              <TouchableOpacity onPress={() => alert('Icon Button Pressed!')}>
-              <PlusCrFr width={48} height={48}/>
+              <TouchableOpacity onPress={() => alert("Icon Button Pressed!")}>
+                <PlusCrFr width={48} height={48} />
               </TouchableOpacity>
             </View>
           ),
@@ -103,27 +113,27 @@ export default function TabLayout() {
       <Tabs.Screen
         name="activity"
         options={{
-          title: 'Activity',
+          title: "Activity",
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <Medal />,
-          tabBarActiveTintColor: 'red',
+          tabBarIcon: ({ color }) => <Medal color={color} />,
+          tabBarActiveTintColor: "#3843ff",
           tabBarIconStyle: {
-            height: '100%',
-            paddingHorizontal: 35
-          }
+            height: "100%",
+            paddingHorizontal: 35,
+          },
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profile',
+          title: "Profile",
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <Profile />,
-          tabBarActiveTintColor: 'red',
+          tabBarIcon: ({ color }) => <Profile color={color} />,
+          tabBarActiveTintColor: "#3843ff",
           tabBarIconStyle: {
-            height: '100%',
-            paddingHorizontal: 35
-          }
+            height: "100%",
+            // paddingHorizontal: 35,
+          },
         }}
       />
     </Tabs>
@@ -160,26 +170,25 @@ const styles = StyleSheet.create({
   bottomTabWrapper: {
     height: 64,
     backgroundColor: "white",
-    color: '#808080',
+    color: "#808080",
     bottom: 25,
     left: 16,
     right: 16,
-    position: 'absolute',
+    position: "absolute",
     borderRadius: 64,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-around'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around",
   },
 
   tabBarButton: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   button: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     width: 48,
   },
-
 });

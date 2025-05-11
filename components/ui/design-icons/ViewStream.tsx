@@ -1,6 +1,7 @@
 import * as React from "react";
 import Svg, { Rect } from "react-native-svg";
-const SvgViewStream = (props: SvgProps) => (
+import { IconProps } from "./2User";
+const SvgViewStream = (props: IconProps) => (
   <Svg
     width={props.width || 24}
     height={props.height || 24}
@@ -9,7 +10,7 @@ const SvgViewStream = (props: SvgProps) => (
     fill="none"
     {...props}
   >
-    <Rect width={16} height={16} x={4} y={4} fill="#040415" rx={4} />
+    <Rect width={16} height={16} x={4} y={4} fill={props.color || "#040415"} rx={4} />
   </Svg>
 );
 export default SvgViewStream;

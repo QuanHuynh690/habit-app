@@ -1,6 +1,7 @@
 import * as React from "react";
 import Svg, { Path, type SvgProps  } from "react-native-svg";
-const SvgUser = (props: SvgProps) => (
+import { IconProps } from "./2User";
+const SvgUser = (props: IconProps) => (
   <Svg
     width={props.width || 24}
     height={props.height || 24}
@@ -15,7 +16,7 @@ const SvgUser = (props: SvgProps) => (
       d="M4 19a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5 3 3 0 0 1-3 3H7a3 3 0 0 1-3-3"
       clipRule="evenodd"
     />
-    <Path fill="#040415" d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10" />
+    <Path fill={props.color || "#040415"} d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10" />
   </Svg>
 );
 export default SvgUser;

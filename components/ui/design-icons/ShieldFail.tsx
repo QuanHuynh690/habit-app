@@ -1,6 +1,7 @@
 import * as React from "react";
 import Svg, { Path, type SvgProps  } from "react-native-svg";
-const SvgShieldFail = (props: SvgProps) => (
+import { IconProps } from "./2User";
+const SvgShieldFail = (props: IconProps) => (
   <Svg
     width={props.width || 24}
     height={props.height || 24}
@@ -16,7 +17,7 @@ const SvgShieldFail = (props: SvgProps) => (
       clipRule="evenodd"
     />
     <Path
-      fill="#040415"
+      fill={props.color || "#040415"}
       fillRule="evenodd"
       d="m13.068 11.725 1.358-1.323a.72.72 0 0 0 0-1.04.77.77 0 0 0-1.068 0L12 10.685l-1.357-1.321a.77.77 0 0 0-1.069 0 .72.72 0 0 0 0 1.04l1.358 1.322-1.358 1.323a.72.72 0 0 0 0 1.04.76.76 0 0 0 .535.215.76.76 0 0 0 .534-.216L12 12.765l1.358 1.322a.76.76 0 0 0 .533.216.76.76 0 0 0 .535-.216.72.72 0 0 0 0-1.04z"
       clipRule="evenodd"
