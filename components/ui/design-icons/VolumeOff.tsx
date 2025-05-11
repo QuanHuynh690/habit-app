@@ -1,6 +1,7 @@
 import * as React from "react";
 import Svg, { Path, type SvgProps  } from "react-native-svg";
-const SvgVolumeOff = (props: SvgProps) => (
+import { IconProps } from "./2User";
+const SvgVolumeOff = (props: IconProps) => (
   <Svg
     width={props.width || 24}
     height={props.height || 24}
@@ -16,7 +17,7 @@ const SvgVolumeOff = (props: SvgProps) => (
       clipRule="evenodd"
     />
     <Path
-      fill="#040415"
+      fill={props.color || "#040415"}
       fillRule="evenodd"
       d="M21.728 3.27a.926.926 0 0 0-1.308 0L3.27 20.42a.93.93 0 0 0 .004 1.313.96.96 0 0 0 .65.268c.24 0 .485-.1.656-.271L21.729 4.581a.927.927 0 0 0-.002-1.311"
       clipRule="evenodd"

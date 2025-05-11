@@ -1,6 +1,7 @@
 import * as React from "react";
 import Svg, { Path, type SvgProps  } from "react-native-svg";
-const SvgBookmark = (props: SvgProps) => (
+import { IconProps } from "./2User";
+const SvgBookmark = (props: IconProps) => (
   <Svg
     width={props.width || 24}
     height={props.height || 24}

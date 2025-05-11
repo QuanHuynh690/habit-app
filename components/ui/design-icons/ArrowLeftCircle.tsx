@@ -1,11 +1,11 @@
 import * as React from "react";
-import Svg, { Path, type SvgProps  } from "react-native-svg";
-const SvgArrowLeftCircle = (props: SvgProps) => (
+import Svg, { Path } from "react-native-svg";
+import { IconProps } from "./2User";
+const SvgArrowLeftCircle = (props: IconProps) => (
   <Svg
     width={props.width || 24}
     height={props.height || 24}
     viewBox="0 0 24 24"
-    
     fill="none"
     {...props}
   >
@@ -16,7 +16,7 @@ const SvgArrowLeftCircle = (props: SvgProps) => (
       clipRule="evenodd"
     />
     <Path
-      fill="#040415"
+      fill={props.color || "#040415"}
       fillRule="evenodd"
       d="M13.443 16.22a.75.75 0 0 1-.53-.218l-3.486-3.47a.75.75 0 0 1 0-1.063l3.487-3.472a.749.749 0 1 1 1.058 1.063L11.019 12l2.953 2.94a.75.75 0 0 1-.53 1.28"
       clipRule="evenodd"

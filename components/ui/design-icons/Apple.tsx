@@ -1,6 +1,7 @@
 import * as React from "react";
 import Svg, { Path, type SvgProps } from "react-native-svg";
-const SvgApple = (props: SvgProps) => (
+import { IconProps } from "./2User";
+const SvgApple = (props: IconProps) => (
   <Svg width={props.width || 25} fill="none" {...props}>
     <Path
       fill="#000"

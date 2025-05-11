@@ -1,6 +1,7 @@
 import * as React from "react";
 import Svg, { Path, type SvgProps  } from "react-native-svg";
-const SvgPaperDownload = (props: SvgProps) => (
+import { IconProps } from "./2User";
+const SvgPaperDownload = (props: IconProps) => (
   <Svg
   width={props.width || 24}
     height={props.height || 24}
@@ -15,7 +16,7 @@ const SvgPaperDownload = (props: SvgProps) => (
       clipRule="evenodd"
     />
     <Path
-      fill="#040415"
+      fill={props.color || "#040415"}
       fillRule="evenodd"
       d="M15.105 12.709a.745.745 0 0 0-1.054.002l-1.589 1.597V9.48a.746.746 0 0 0-1.49 0v4.827l-1.59-1.597a.744.744 0 1 0-1.056 1.05l2.863 2.877h.001a.745.745 0 0 0 1.053 0h.002l2.862-2.876a.744.744 0 0 0-.002-1.053"
       clipRule="evenodd"

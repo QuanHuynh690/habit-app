@@ -1,109 +1,87 @@
-import { StyleSheet, Image, Platform } from 'react-native';
+import { Image, View } from "react-native";
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import ParallaxScrollView from "@/components/ParallaxScrollView";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { ProfileTab } from "@/shared/enums/profile";
+import { SceneMap } from "react-native-tab-view";
+import TabViewScreen from "@/components/tab-view-screen/TabViewScreen";
+import {
+  Edit1,
+  Filter,
+  Medal,
+  Plus,
+  Setting,
+} from "@/components/ui/design-icons";
+import Header from "@/components/header/Header";
+import { FlatColors } from "@/shared/constants/Colors";
+import { mockFriends } from "@/shared/mocks/friends";
+import { activityLog } from "@/shared/mocks/activityLogs";
+import ItemList from "@/components/item-list/ItemList";
 
-export default function TabTwoScreen() {
+const routes = [
+  { key: ProfileTab.Activity, title: "Activity" },
+  { key: ProfileTab.Friend, title: "Friends" },
+  { key: ProfileTab.Achievement, title: "Achievements" },
+];
+
+const renderScene = SceneMap({
+  activity: () => (
+    <ItemList
+      type={ProfileTab.Activity}
+      data={activityLog}
+      firstButton={<Filter />}
+      listFirstAction={() => alert("Filter activity list")}
+      listHeaderText="Showing last month activity"
+    />
+  ),
+  friend: () => (
+    <ItemList
+      type={ProfileTab.Friend}
+      data={mockFriends}
+      firstButton={<Edit1 />}
+      secondButton={<Plus />}
+      listFirstAction={() => alert("Edit friend list")}
+      listSecondAction={() => alert("Add friend")}
+      listHeaderText={`${mockFriends.length} Friends`}
+    />
+  ),
+  achievement: () => <ItemList type={ProfileTab.Achievement} />,
+});
+
+export default function ProfileScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
+      headerBackgroundColor={{ light: "#fff", dark: "#353636" }}
       headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
+        <View className="px-6">
+          <Header icon={<Setting />} title="Your Profile" />
+          <View className="flex flex-row items-center mt-3">
+            <Image
+              source={{ uri: "https://reactjs.org/logo-og.png" }}
+              className="w-14 h-14 rounded-full mr-2"
+            />
+            <View>
+              <ThemedText className="font-sans text-lg text-black-100 font-medium">
+                Quan Huynh
+              </ThemedText>
+              <View className="flex flex-row items-center text-sm bg-warning-10 text-warning-100 rounded-lg w-fit px-1 py-0.5 mt-1">
+                <Medal
+                  width={16}
+                  color={FlatColors["warning-40"]}
+                  secondColor={FlatColors["warning-100"]}
+                  fillOpacity={1}
+                />
+                1234 Points
+              </View>
+            </View>
+          </View>
+        </View>
+      }
+    >
+      <ThemedView>
+        <TabViewScreen renderScene={renderScene} routes={routes} />
       </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
     </ParallaxScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-});

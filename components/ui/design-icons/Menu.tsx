@@ -1,6 +1,7 @@
 import * as React from "react";
 import Svg, { Path, Rect } from "react-native-svg";
-const SvgMenu = (props: SvgProps) => (
+import { IconProps } from "./2User";
+const SvgMenu = (props: IconProps) => (
   <Svg
     width={props.width || 24}
     height={props.height || 24}
@@ -15,7 +16,7 @@ const SvgMenu = (props: SvgProps) => (
       d="M7 6a1 1 0 0 0 0 2h10a1 1 0 1 0 0-2zm0 10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2z"
       clipRule="evenodd"
     />
-    <Rect width={18} height={2} x={3} y={11} fill="#040415" rx={1} />
+    <Rect width={18} height={2} x={3} y={11} fill={props.color || "#040415"} rx={1} />
   </Svg>
 );
 export default SvgMenu;
