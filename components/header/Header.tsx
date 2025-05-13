@@ -6,20 +6,21 @@ import { Setting } from "../ui/design-icons";
 interface HeaderProps {
   title: string;
   icon?: ReactElement;
+  headerButtonAction?: () => void;
 }
 const Header = (props: HeaderProps) => {
-  const { title, icon } = props;
+  const { title, icon, headerButtonAction } = props;
   return (
-      <View className="flex flex-row items-center justify-between">
-        <ThemedText className="text-2xl font-medium">{title}</ThemedText>
-        {icon && (
-          <IconButton
-            icon={icon}
-            onPress={() => alert("Setting button pressed")}
-            width={48}
-            height={48}
-          />
-        )}
+    <View className="flex flex-row items-center justify-between">
+      <ThemedText type="title" className="font-medium">{title}</ThemedText>
+      {icon && (
+        <IconButton
+          icon={icon}
+          onPress={headerButtonAction}
+          width={48}
+          height={48}
+        />
+      )}
     </View>
   );
 };

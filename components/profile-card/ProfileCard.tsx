@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { ProfileTab } from "@/shared/enums/profile";
 import { Image, Text, View } from "react-native";
 import IconButton from "../icon-button/IconButton";
+import { ThemedText } from "../ThemedText";
 
 interface ProfileCardProps {
   title: string;
@@ -23,15 +24,15 @@ const ProfileCard = (props: ProfileCardProps) => {
           />
         )}
         <View>
-          <Text className="font-sans text-sm text-black-100 font-medium">
+          <ThemedText className="text-sm text-black-100 font-medium">
             {title}
-          </Text>
-          <Text className="text-black-40 text-xs">{subTitle}</Text>
+          </ThemedText>
+          <ThemedText className="text-black-40 text-xs">{subTitle}</ThemedText>
         </View>
       </View>
       {actionIcon && (
         <View>
-          <IconButton icon={actionIcon} onPress={actionButton} />
+          <IconButton icon={actionIcon} onPress={actionButton} height={36} width={36}/>
         </View>
       )}
     </View>
