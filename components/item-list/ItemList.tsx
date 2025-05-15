@@ -1,11 +1,11 @@
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import ProfileCard from "@/components/profile-card/ProfileCard";
 import { ProfileTab } from "@/shared/enums/profile";
 import { TrashCan } from "@/components/ui/design-icons";
 import IconButton from "@/components/icon-button/IconButton";
 import { ActivityLog, Friend } from "@/shared/type/profile.type";
-import { ReactElement } from "react";
+import { ReactElement, StrictMode } from "react";
 import { listRenderers } from "@/shared/utilities/renderList";
 interface ItemList {
   type: ProfileTab;
@@ -24,8 +24,10 @@ const ItemList = (props: ItemList) => {
     listFirstAction,
     listSecondAction,
   } = props;
+  
   return (
-    <View className="px-6 py-3">
+    <StrictMode>
+    <View className="px-6 py-3 relative">
       <View className="flex flex-row justify-between items-center">
         <View className="flex flex-row justify-between items-center w-full">
           <ThemedText> {listHeaderText}</ThemedText>
@@ -54,6 +56,7 @@ const ItemList = (props: ItemList) => {
         })}
       </View>
     </View>
+    </StrictMode>
   );
 };
 

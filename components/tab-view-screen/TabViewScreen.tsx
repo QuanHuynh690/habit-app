@@ -10,22 +10,25 @@ import ProfileCard from "../profile-card/ProfileCard";
 import { ProfileTab } from "@/shared/enums/profile";
 import TabBar from "./tab-bar/TabBar";
 
-
 interface TabViewScreenProps {
   routes: Route[];
-  renderScene: (props: SceneRendererProps & { route: Route }) => JSX.Element;
+  renderScene: (
+    props: SceneRendererProps & { route: Route }
+  ) => JSX.Element | null;
 }
 export default function TabViewScreen(props: TabViewScreenProps) {
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);
 
   return (
-    <TabView
-      navigationState={{ index, routes: props.routes }}
-      renderScene={props.renderScene}
-      renderTabBar={(props) => <TabBar {...props} />}
-      onIndexChange={setIndex}
-      initialLayout={{ width: layout.width }}
-    />
+    <View className="h-screen">
+      <TabView
+        navigationState={{ index, routes: props.routes }}
+        renderScene={props.renderScene}
+        renderTabBar={(props) => <TabBar {...props} />}
+        onIndexChange={setIndex}
+        initialLayout={{ width: layout.width }}
+      />
+    </View>
   );
 }
