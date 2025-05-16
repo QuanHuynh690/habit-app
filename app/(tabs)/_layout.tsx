@@ -1,40 +1,24 @@
 //import { Tabs, TabSlot, TabList, TabTrigger } from 'expo-router/ui';
-import { Tabs } from "expo-router";
+import { Tabs, useRouter } from "expo-router";
 import React from "react";
-import {
-  Button,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Platform, TouchableOpacity, View } from "react-native";
 
-import { HapticTab } from "@/components/HapticTab";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import TabBarBackground from "@/components/ui/TabBarBackground";
 import { Colors } from "@/shared/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import SvgHome1 from "@/components/ui/design-icons/Home1";
-import {
-  Discovery,
-  Medal,
-  PlusCrFr,
-  Profile,
-} from "@/components/ui/design-icons";
+import Header from "@/components/header/Header";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
+  const router = useRouter();
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        headerShown: false,
         tabBarItemStyle: {
           //padding: 10,
           width: "100%",
-          height: "100%",
+          height: 64,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -53,6 +37,8 @@ export default function TabLayout() {
             alignItems: "center",
             justifyContent: "space-around",
             borderWidth: 1,
+            start: 16,
+            end: 16,
           },
           default: {
             height: 64,
@@ -75,7 +61,7 @@ export default function TabLayout() {
         options={{
           title: "Home",
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <SvgHome1 color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol name="Home1" color={color} />,
           tabBarActiveTintColor: "#3843ff",
           tabBarIconStyle: {
             height: "100%",
@@ -88,7 +74,9 @@ export default function TabLayout() {
         options={{
           title: "Explore",
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <Discovery color={color} />,
+          tabBarIcon: ({ color }) => (
+            <IconSymbol name="Discovery" color={color} />
+          ),
           tabBarActiveTintColor: "#3843ff",
           tabBarIconStyle: {
             height: "100%",
@@ -103,7 +91,7 @@ export default function TabLayout() {
           tabBarButton: () => (
             <View>
               <TouchableOpacity onPress={() => alert("Icon Button Pressed!")}>
-                <PlusCrFr width={48} height={48} />
+                <IconSymbol name="PlusCrFr" width={48} height={48} />
               </TouchableOpacity>
             </View>
           ),
@@ -115,7 +103,7 @@ export default function TabLayout() {
         options={{
           title: "Activity",
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <Medal color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol name="Medal" color={color} />,
           tabBarActiveTintColor: "#3843ff",
           tabBarIconStyle: {
             height: "100%",
@@ -126,9 +114,18 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
+          header: () => (
+            <Header
+              rightIcon={<IconSymbol name="Setting" />}
+              title="Your Profile"
+              headerButtonAction={() => router.push("/setting")}
+            />
+          ),
           title: "Profile",
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <Profile color={color} />,
+          tabBarIcon: ({ color }) => (
+            <IconSymbol name="Profile" color={color} />
+          ),
           tabBarActiveTintColor: "#3843ff",
           tabBarIconStyle: {
             height: "100%",
@@ -165,30 +162,3 @@ export default function TabLayout() {
     //</Tabs>
   );
 }
-
-const styles = StyleSheet.create({
-  bottomTabWrapper: {
-    height: 64,
-    backgroundColor: "white",
-    color: "#808080",
-    bottom: 25,
-    left: 16,
-    right: 16,
-    position: "absolute",
-    borderRadius: 64,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-around",
-  },
-
-  tabBarButton: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    width: 48,
-  },
-});

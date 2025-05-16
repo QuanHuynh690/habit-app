@@ -1,9 +1,11 @@
 import * as React from "react";
 import { ColorValue } from "react-native";
 import Svg, { Path, type SvgProps } from "react-native-svg";
+import { IconSymbolName } from "../IconSymbol";
 export interface IconProps extends SvgProps {
+  name: IconSymbolName;
   secondColor?: ColorValue;
-  fillOpacity?:number
+  fillOpacity?: number;
 }
 const Svg2User = (props: IconProps) => (
   <Svg
