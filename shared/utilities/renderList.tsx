@@ -9,15 +9,29 @@ import {
 } from "@/components/ui/design-icons";
 import ProfileCard from "@/components/profile-card/ProfileCard";
 import { FlatColors } from "../constants/Colors";
+import { IconSymbol } from "@/components/ui/IconSymbol";
 const getActivityIcon = (type: ActivityType) => {
   switch (type) {
     case ActivityType.Good:
-      return <ArrowUp3 color={FlatColors["success-100"]} secondColor={FlatColors["success-100"]} />;
+      return (
+        <IconSymbol
+          name="ArrowUp3"
+          color={FlatColors["success-100"]}
+          secondColor={FlatColors["success-100"]}
+        />
+      );
     case ActivityType.Bad:
-      return <ArrowDown3 color={FlatColors["error-100"]} secondColor={FlatColors["error-100"]}/>;
+      return (
+        <IconSymbol
+          name="ArrowDown3"
+          color={FlatColors["error-100"]}
+          secondColor={FlatColors["error-100"]}
+        />
+      );
     default:
       return (
-        <Medal
+        <IconSymbol
+          name="Medal"
           color={FlatColors["warning-100"]}
           secondColor={FlatColors["warning-20"]}
         />
@@ -34,7 +48,7 @@ export const listRenderers: {
       subTitle={`${item.point} Points`}
       image={item.profilePicture}
       type={ProfileTab.Friend}
-      actionIcon={<TrashCan />}
+      actionIcon={<IconSymbol name="TrashCan" />}
       actionButton={() => alert(`Remove friend id : ${item.id}`)}
     />
   ),

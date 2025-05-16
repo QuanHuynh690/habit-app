@@ -14,13 +14,14 @@ const IconButton = (props: IconButtonProps) => {
       width: width,
       height: height,
       backgroundColor: bgColor,
+      borderRadius: width ? width / 3 : 12,
     },
   });
   return (
     <TouchableOpacity
       style={styles.iconButton}
       onPress={onPress}
-      className="border border-black-10 rounded-xl p-1.5 flex items-center justify-center"
+      className="border border-black-10 p-1.5 flex items-center justify-center"
     >
       {icon}
     </TouchableOpacity>

@@ -1,24 +1,43 @@
-import { ReactElement } from "react";
-import { ProfileTab } from "@/shared/enums/profile";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Link, useRouter } from "expo-router";
+import { StyleSheet, View } from "react-native";
+
 import { FlatColors } from "@/shared/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import { SettingItemProps } from "@/shared/type/setting.type";
+import Switch from "@/components/switch/Switch";
 
-interface SettingItemProps {
-  title: string;
-  icon: ReactElement;
-  isLast?: boolean
-}
 const SettingItem = (props: SettingItemProps) => {
-  const { title, icon, isLast } = props;
+  const { title, icon, isLast, href } = props;
+  const router = useRouter();
   return (
-    <View className="h-14 items-center flex flex-row justify-between w-full" style={isLast ? styles.lastItem : styles.item}>
-      <View className="flex flex-row justify-between items-center">
-        {icon}
-        <ThemedText className="ml-2">{title}</ThemedText>
-      </View>
-      <View>{icon}</View>
-    </View>
+    <>
+      {href ? (
+        <Link href={href}>
+          <View
+            className="h-14 items-center flex flex-row justify-between w-full"
+            style={isLast ? styles.lastItem : styles.item}
+          >
+            <View className="flex flex-row justify-between items-center">
+              {<IconSymbol name={icon} />}
+              <ThemedText className="ml-2">{title}</ThemedText>
+            </View>
+            <IconSymbol name="ArrowRight2" />
+          </View>
+        </Link>
+      ) : (
+        <View
+          className="h-14 items-center flex flex-row justify-between w-full"
+          style={isLast ? styles.lastItem : styles.item}
+        >
+          <View className="flex flex-row justify-between items-center">
+            {<IconSymbol name={icon} />}
+            <ThemedText className="ml-2">{title}</ThemedText>
+          </View>
+          <Switch />
+        </View>
+      )}
+    </>
   );
 };
 export default SettingItem;
@@ -26,9 +45,9 @@ export default SettingItem;
 const styles = StyleSheet.create({
   item: {
     borderBottomWidth: 1,
-    borderColor: FlatColors["black-10"]
+    borderColor: FlatColors["black-10"],
   },
   lastItem: {
     borderBottomWidth: 0,
-  }
-})
+  },
+});

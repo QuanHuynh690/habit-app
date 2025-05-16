@@ -1,25 +1,18 @@
-import { Image, Text, View } from "react-native";
-import {  useRouter } from "expo-router";
+import { Image, View } from "react-native";
+import { useRouter } from "expo-router";
+import type { SceneRendererProps, Route } from "react-native-tab-view";
 
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import { ProfileTab } from "@/shared/enums/profile";
-import { SceneMap } from "react-native-tab-view";
 import TabViewScreen from "@/components/tab-view-screen/TabViewScreen";
-import {
-  Edit1,
-  Filter,
-  Medal,
-  Plus,
-  Setting,
-} from "@/components/ui/design-icons";
 import Header from "@/components/header/Header";
 import { FlatColors } from "@/shared/constants/Colors";
 import { mockFriends } from "@/shared/mocks/friends";
 import { activityLog } from "@/shared/mocks/activityLogs";
 import ItemList from "@/components/item-list/ItemList";
-import type { SceneRendererProps ,Route} from "react-native-tab-view";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import { ThemedView } from "@/components/ThemedView";
 
 type SceneRoute = {
   route: { key: string };
@@ -37,7 +30,7 @@ const renderScene = (props: SceneRendererProps & { route: Route }) => {
         <ItemList
           type={ProfileTab.Activity}
           data={activityLog}
-          firstButton={<Filter />}
+          firstButton={<IconSymbol name="Filter" />}
           listFirstAction={() => alert("Filter activity list")}
           listHeaderText="Showing last month activity"
         />
@@ -47,8 +40,8 @@ const renderScene = (props: SceneRendererProps & { route: Route }) => {
         <ItemList
           type={ProfileTab.Friend}
           data={mockFriends}
-          firstButton={<Edit1 />}
-          secondButton={<Plus />}
+          firstButton={<IconSymbol name="Edit1" />}
+          secondButton={<IconSymbol name="Plus" />}
           listFirstAction={() => alert("Edit friend list")}
           listSecondAction={() => alert("Add friend")}
           listHeaderText={`${mockFriends.length} Friends`}
@@ -88,41 +81,31 @@ const renderScene = (props: SceneRendererProps & { route: Route }) => {
 export default function ProfileScreen() {
   const router = useRouter();
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#fff", dark: "#353636" }}
-      headerImage={
-        <View className="px-6">
-          <Header
-            icon={<Setting />}
-            title="Your Profile"
-            headerButtonAction={() => router.push("/setting")}
-          />
-          <View className="flex flex-row items-center mt-3">
-            <Image
-              source={{ uri: "https://reactjs.org/logo-og.png" }}
-              className="w-14 h-14 rounded-full mr-2"
+    <ThemedView >
+      <View className="flex flex-row items-center px-6 py-3 bg-base-white">
+        <Image
+          source={{ uri: "https://reactjs.org/logo-og.png" }}
+          className="w-14 h-14 rounded-full mr-2"
+        />
+        <View>
+          <ThemedText className="font-sans text-lg text-black-100 font-medium">
+            Quan Huynh
+          </ThemedText>
+          <View className="flex flex-row items-center bg-warning-10 rounded-lg w-fit px-1 py-0.5 mt-1">
+            <IconSymbol
+              name="Medal"
+              width={16}
+              color={FlatColors["warning-40"]}
+              secondColor={FlatColors["warning-100"]}
+              fillOpacity={1}
             />
-            <View>
-              <ThemedText className="font-sans text-lg text-black-100 font-medium">
-                Quan Huynh
-              </ThemedText>
-              <View className="flex flex-row items-center bg-warning-10 rounded-lg w-fit px-1 py-0.5 mt-1">
-                <Medal
-                  width={16}
-                  color={FlatColors["warning-40"]}
-                  secondColor={FlatColors["warning-100"]}
-                  fillOpacity={1}
-                />
-                <ThemedText className="text-warning-100 text-sm font-medium">1274 Points</ThemedText>
-              </View>
-            </View>
+            <ThemedText className="text-warning-100 text-sm font-medium">
+              1274 Points
+            </ThemedText>
           </View>
         </View>
-      }
-    >
-      <View className="flex flex-1">
-        <TabViewScreen renderScene={renderScene} routes={routes} />
       </View>
-    </ParallaxScrollView>
+        <TabViewScreen renderScene={renderScene} routes={routes} />
+    </ThemedView>
   );
 }
