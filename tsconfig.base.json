@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "commonjs",
+    "strict": true,
+    "baseUrl": "./",
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["apps/mobile/*"],
+      "@backend/*": ["backend/*"],
+      "@shared/*": ["shared/*"],
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "env.d.ts",
+  ]
+}
