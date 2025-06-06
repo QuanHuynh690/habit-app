@@ -1,4 +1,4 @@
-import { IconSymbolName } from "@/components/ui/IconSymbol";
+import { IconSymbolName } from "@/apps/components/ui/IconSymbol";
 
 export interface SettingItemProps {
   title: string;
