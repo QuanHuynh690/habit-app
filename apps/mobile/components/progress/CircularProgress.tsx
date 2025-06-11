@@ -4,7 +4,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import Svg, { Circle } from "react-native-svg";
 import { IconSymbol } from "../ui/IconSymbol";
-import { FlatColors } from "@shared/constants/Colors";
+import { FlatColors } from "@shared/src/constants/Colors";
 
 type Props = {
   progress?: number;

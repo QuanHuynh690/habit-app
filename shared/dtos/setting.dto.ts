@@ -1,8 +1,8 @@
-import { IconSymbolName } from "@/apps/components/ui/IconSymbol";
+// import { IconSymbolName } from '@app/components/ui/IconSymbol'
 
 export interface SettingItemProps {
   title: string;
-  icon: IconSymbolName;
+  icon: string ;
   href?: "/setting/general" | "/setting/security" | "/setting/notification";
   isLast?: boolean;
 }
