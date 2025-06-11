@@ -4,13 +4,13 @@ import ProfileCard from "@/components/profile-card/ProfileCard";
 import { ProfileTab } from "@shared/enums/profile";
 import { TrashCan } from "@/components/ui/design-icons";
 import IconButton from "@/components/icon-button/IconButton";
-import { ActivityLog, Friend } from "@shared/type/profile.type";
+import { ActivityLog, UserDto } from "@shared/dtos/user.dto";
 import { ReactElement, StrictMode } from "react";
-import { listRenderers } from "@shared/utilities/renderList";
 import React from "react";
+import { listRenderers } from "@/utilities";
 interface ItemList {
   type: ProfileTab;
-  data?: Friend[] | ActivityLog[];
+  data?: UserDto[] | ActivityLog[];
   listHeaderText?: string;
   firstButton?: ReactElement;
   secondButton?: ReactElement;

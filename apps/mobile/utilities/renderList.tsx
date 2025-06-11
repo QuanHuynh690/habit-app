@@ -1,6 +1,4 @@
 import React, { ReactElement } from "react";
-import { ActivityType, ProfileTab } from "../enums/profile";
-import { ActivityLog, Friend } from "../type/profile.type";
 import {
   ArrowDown3,
   ArrowUp3,
@@ -8,8 +6,10 @@ import {
   TrashCan,
 } from "@/components/ui/design-icons";
 import ProfileCard from "@/components/profile-card/ProfileCard";
-import { FlatColors } from "../constants/Colors";
 import { IconSymbol } from "@/components/ui/IconSymbol";
+import { FlatColors } from "@shared/constants/Colors";
+import { ActivityLog, UserDto } from "@shared/dtos/user.dto";
+import { ActivityType, ProfileTab } from "@shared/enums/profile";
 const getActivityIcon = (type: ActivityType) => {
   switch (type) {
     case ActivityType.Good:
@@ -41,10 +41,10 @@ const getActivityIcon = (type: ActivityType) => {
 export const listRenderers: {
   [key in ProfileTab]: (item: any, index: number) => ReactElement | null;
 } = {
-  [ProfileTab.Friend]: (item: Friend, index) => (
+  [ProfileTab.Friend]: (item: UserDto, index) => (
     <ProfileCard
       key={index}
-      title={item.name}
+      title={item.firstName}
       subTitle={`${item.point} Points`}
       image={item.profilePicture}
       type={ProfileTab.Friend}

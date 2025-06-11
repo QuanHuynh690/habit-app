@@ -17,7 +17,7 @@ import IconButton from "@/components/icon-button/IconButton";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 
 import Header from "@/components/header/Header";
-import { getTitleFromPath } from "@shared/utilities/getTitleFromPath";
+import { getTitleFromPath } from "@/utilities";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();

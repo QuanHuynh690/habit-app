@@ -1,5 +1,5 @@
 import { ActivityType } from "../enums/profile";
-import { ActivityLog } from "../type/profile.type";
+import { ActivityLog } from "../dtos/user.dto";
 
 export const activityLog: ActivityLog[] = [
   {

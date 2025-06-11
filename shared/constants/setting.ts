@@ -1,4 +1,4 @@
-import { SettingList } from "../type/setting.type";
+import { SettingList } from "../dtos/setting.dto";
 
 export const settingList: SettingList[] = [
   {

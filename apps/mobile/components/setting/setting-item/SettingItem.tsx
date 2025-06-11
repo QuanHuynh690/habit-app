@@ -1,7 +1,7 @@
 import { Link, useRouter } from "expo-router";
 import { StyleSheet, View } from "react-native";
 
-import { FlatColors } from "@shared/constants/Colors";
+import { FlatColors } from "@shared/src/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { SettingItemProps } from "@shared/type/setting.type";

@@ -1,10 +1,11 @@
 import { ActivityType } from "../enums/profile";
 
-export interface Friend {
-  id: number;
-  name: string;
+export interface UserDto {
+  id: string;
+  firstName: string;
+  lastName: string;
   point: number;
-  profilePicture: string;
+  profilePicture?: string;
 }
 
 export interface ActivityLog {

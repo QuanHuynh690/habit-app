@@ -17,7 +17,7 @@ module.exports = function (api) {
           alias: {
             "@": path.resolve(projectRoot, "apps/mobile"),
             "@shared": path.resolve(projectRoot, "shared"),
-            "@backend": path.resolve(projectRoot, "backend"),
+            "@services": path.resolve(projectRoot, "services"),
           },
         },
       ],

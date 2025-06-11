@@ -1,5 +1,4 @@
 {
-  "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
@@ -9,8 +8,13 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2023",
     "sourceMap": true,
-    "outDir": "./dist",
     "baseUrl": "./",
+    "outDir": "./dist",
+    "paths": {
+      "@/*": ["*"],
+      "@services/*": ["../../services/*"],
+      "@shared/*": ["../../shared/*"],
+    },
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
@@ -19,5 +23,4 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false
   },
-  "include": ["src/**/*"]
 }

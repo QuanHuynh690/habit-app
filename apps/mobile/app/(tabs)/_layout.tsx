@@ -4,7 +4,7 @@ import React from "react";
 import { Platform, TouchableOpacity, View } from "react-native";
 
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { Colors, FlatColors } from "@shared/constants/Colors";
+import { Colors, FlatColors } from "@shared/src/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import Header from "@/components/header/Header";
 

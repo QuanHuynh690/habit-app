@@ -14,12 +14,12 @@ config.resolver.nodeModulesPaths = [
 config.resolver.extraNodeModules = {
   "@": path.resolve(projectRoot, "apps/mobile"),
   "@shared": path.resolve(projectRoot, "shared"),
-  "@backend": path.resolve(projectRoot, "backend"),
+  "@services": path.resolve(projectRoot, "services"),
 };
 
 config.watchFolders = [
   path.resolve(projectRoot, "shared"),
-  path.resolve(projectRoot, "backend"),
+  path.resolve(projectRoot, "services"),
   path.resolve(projectRoot, "apps"),
 ];
 

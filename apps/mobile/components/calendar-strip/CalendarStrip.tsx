@@ -1,7 +1,7 @@
 import React from "react";
 import CalendarStrip from "react-native-calendar-strip";
 
-import { FlatColors } from "@shared/constants/Colors";
+import { FlatColors } from "@shared/src/constants/Colors";
 
 export interface CalendarProps {
   selectedDate: moment.Moment;
