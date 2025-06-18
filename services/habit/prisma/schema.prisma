@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+   previewFeatures = ["multiSchema"]
+  output   = "../../../../node_modules/@prisma-client/habit"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  schemas  = ["habit"]
+}
+
+enum ChallengeType {
+  walking
+  yoga
+  running
+  meditation
+  swimming
+
+@@schema("habit")
+}
+
+model Challenge {
+  id          String              @id @default(uuid())
+  name        String
+  type        ChallengeType
+  target      Int
+  reward      Reward              @relation(fields: [rewardId], references: [id])
+  rewardId    String              
+  location    ChallengeLocation   @relation(fields: [locationId], references: [id])
+  locationId  String              
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  @@schema("habit")
+}
+
+model Reward {
+  id      String   @id @default(uuid())
+  point   Int
+  badge   String?  // optional
+  challenge Challenge[]
+
+  @@schema("habit")
+}
+
+model ChallengeLocation {
+  id         String   @id @default(uuid())
+  name       String
+  latitude   Float
+  longitude  Float
+  challenge  Challenge[]
+
+  @@schema("habit")
+}

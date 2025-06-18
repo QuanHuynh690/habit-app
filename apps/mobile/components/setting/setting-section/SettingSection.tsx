@@ -1,10 +1,9 @@
 import React from "react";
 import { View } from "react-native";
 
-import { SettingItemProps } from "@shared/type/setting.type";
 import { ThemedText } from "@/components/ThemedText";
 
-import SettingItem from "../setting-item/SettingItem";
+import SettingItem, { SettingItemProps } from "../setting-item/SettingItem";
 interface SettingSectionProps {
   title: string;
   list?: any;
