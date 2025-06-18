@@ -1,10 +1,10 @@
 -- CreateTable
-CREATE TABLE "User" (
+CREATE TABLE "user"."User" (
     "id" TEXT NOT NULL,
-    "first_name" TEXT NOT NULL,
-    "last_name" TEXT NOT NULL,
+    "firstName" TEXT NOT NULL,
+    "lastName" TEXT NOT NULL,
     "point" INTEGER NOT NULL DEFAULT 0,
-    "profile_picture" TEXT,
+    "profilePicture" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

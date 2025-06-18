@@ -1,5 +1,9 @@
-import { SettingList } from "../dtos/setting.dto";
+import { SettingItemProps } from "@/components/setting/setting-item/SettingItem";
 
+export interface SettingList {
+  name: string;
+  children: SettingItemProps[];
+}
 export const settingList: SettingList[] = [
   {
     name: "General",

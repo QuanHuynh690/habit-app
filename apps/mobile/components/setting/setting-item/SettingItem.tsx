@@ -1,11 +1,17 @@
 import { Link, useRouter } from "expo-router";
 import { StyleSheet, View } from "react-native";
 
-import { FlatColors } from "@shared/src/constants/Colors";
+import { FlatColors } from "@shared/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import { SettingItemProps } from "@shared/type/setting.type";
+import { IconSymbol, IconSymbolName } from "@/components/ui/IconSymbol";
 import Switch from "@/components/switch/Switch";
+
+export interface SettingItemProps {
+  title: string;
+  icon: IconSymbolName ;
+  href?: "/setting/general" | "/setting/security" | "/setting/notification";
+  isLast?: boolean;
+}
 
 const SettingItem = (props: SettingItemProps) => {
   const { title, icon, isLast, href } = props;

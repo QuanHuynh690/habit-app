@@ -6,12 +6,14 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
   output   = "../../../../node_modules/@prisma-client/user"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  schemas  = ["user"]
 }
 
 model User {
@@ -22,4 +24,6 @@ model User {
   profilePicture  String?  // optional (nullable)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+
+@@schema("user")
 }

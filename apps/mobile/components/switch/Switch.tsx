@@ -1,7 +1,8 @@
-import { FlatColors } from "@shared/src/constants/Colors";
 import React, { useState } from "react";
 import { Switch as RNSwitch, StyleSheet } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+
+import { FlatColors } from "@shared/constants/Colors";
 
 const Switch = () => {
   const [isEnabled, setIsEnabled] = useState(false);

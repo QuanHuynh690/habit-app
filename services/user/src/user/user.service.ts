@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { FetchItemsDto } from '@shared/dtos';
+import { FetchItemsDtoReqBody } from '@shared/contracts/fetch-items.contract';
+
 import { Prisma, PrismaService } from '../shared/prisma.service';
 import { UserDto } from '../dtos/user.dto';
-import { FetchItemsDto } from '../dtos/fetch-items.dto';
-import { FetchItemsDtoReqBody } from '@shared/contracts/fetch-items.contract';
 
 @Injectable()
 export class UserService {
@@ -22,7 +23,6 @@ export class UserService {
   }: Partial<FetchItemsDtoReqBody>): Promise<FetchItemsDto<UserDto>> {
     // const orderBy = { [sortBy]: sortOrder };
     const where = {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       OR: [{ firstName: { contains: search, mode: 'insensitive' } }],
     } as Prisma.UserWhereInput;
 

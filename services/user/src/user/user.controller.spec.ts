@@ -15,7 +15,7 @@ describe('UserController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
+    it('should return user list', () => {
       expect(userController.findAll({ page: 1, pageSize: 10 })).toBe(
         'Hello World!',
       );

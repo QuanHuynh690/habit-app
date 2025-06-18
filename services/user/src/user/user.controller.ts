@@ -4,8 +4,8 @@ import { ApiQuery, ApiTags } from '@nestjs/swagger';
 import { FetchItemsDtoReqBody } from '@shared/contracts/fetch-items.contract';
 
 import { UserService } from './user.service';
-import { FetchItemsDto } from '../dtos/fetch-items.dto';
 import { UserDto } from '../dtos/user.dto';
+import { FetchItemsDto } from '@shared/dtos';
 
 @ApiTags('Users')
 @Controller()
