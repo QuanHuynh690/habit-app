@@ -1,19 +1,10 @@
-import { PrismaClient } from '@prisma-client/habit';
+import { ChallengeType, PrismaClient } from '@prisma-client/habit';
 const prisma = new PrismaClient();
 
 async function main(): Promise<void> {
-  const reward1 = await prisma.reward.create({
+  const badge1 = await prisma.badge.create({
     data: {
-      point: 100,
-      badge: 'Bronze Walker',
-    },
-  });
-
-  const location1 = await prisma.challengeLocation.create({
-    data: {
-      name: 'Công viên Gia Định',
-      latitude: 10.8123,
-      longitude: 106.6789,
+      name: 'Bronze Walker',
     },
   });
 
@@ -21,9 +12,12 @@ async function main(): Promise<void> {
     data: [
       {
         name: 'Walking Challenge',
-        type: 'yoga',
-        rewardId: reward1.id,
-        locationId: location1.id,
+        type: ChallengeType.running,
+        point: 100,
+        badgeId: badge1.id,
+        locationName: 'Công viên Gia Định',
+        latitude: 10.8123,
+        longitude: 106.6789,
         target: 60,
       },
     ],

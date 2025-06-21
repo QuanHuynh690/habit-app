@@ -21,35 +21,28 @@ enum ChallengeType {
 }
 
 model Challenge {
-  id          String              @id @default(uuid())
-  name        String
-  type        ChallengeType
-  target      Int
-  reward      Reward              @relation(fields: [rewardId], references: [id])
-  rewardId    String              
-  location    ChallengeLocation   @relation(fields: [locationId], references: [id])
-  locationId  String              
-  createdAt   DateTime            @default(now())
-  updatedAt   DateTime            @updatedAt
+  id            String              @id @default(uuid())
+  name          String
+  type          ChallengeType       @map("challenge_type")
+  target        Int
+  point         Int
+  badge         Badge?              @relation(fields: [badgeId], references: [id])
+  badgeId       String?              
+  locationName  String
+  latitude      Float
+  longitude    Float
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
 
   @@schema("habit")
 }
 
-model Reward {
+model Badge {
   id      String   @id @default(uuid())
-  point   Int
-  badge   String?  // optional
+  name   String  
   challenge Challenge[]
 
   @@schema("habit")
 }
 
-model ChallengeLocation {
-  id         String   @id @default(uuid())
-  name       String
-  latitude   Float
-  longitude  Float
-  challenge  Challenge[]
 
-  @@schema("habit")
-}
