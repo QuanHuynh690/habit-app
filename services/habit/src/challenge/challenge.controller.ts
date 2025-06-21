@@ -7,14 +7,13 @@ import {
   Query,
   Version,
 } from '@nestjs/common';
-import { ApiQuery } from '@nestjs/swagger';
+import { ApiBody, ApiQuery } from '@nestjs/swagger';
 
 import { FetchItemsDto } from '@shared/dtos';
 import { FetchItemsDtoReqBody } from '@shared/contracts/fetch-items.contract';
+import { CreateChallengeDto, ChallengeDto } from '@shared/contracts';
 
 import { ChallengeService } from './challenge.service';
-import { ChallengeDto } from '../dtos/challenge.dto';
-
 @Controller()
 export class ChallengeController {
   constructor(private readonly challengeService: ChallengeService) {}
@@ -29,6 +28,8 @@ export class ChallengeController {
   @ApiQuery({ name: 'page', required: false, type: Number, example: 1 })
   @ApiQuery({ name: 'pageSize', required: false, type: Number, example: 10 })
   @ApiQuery({ name: 'search', required: false, type: String })
+  @ApiQuery({ name: 'userLat', required: false, type: Number, example: 0 })
+  @ApiQuery({ name: 'userLng', required: false, type: Number, example: 0 })
   async findAll(
     @Query() query: FetchItemsDtoReqBody,
   ): Promise<FetchItemsDto<ChallengeDto>> {
@@ -47,9 +48,18 @@ export class ChallengeController {
     return await this.challengeService.findChallengeById(id);
   }
 
+  /**
+   * Create a challenge.
+   *
+   * @param challengeBody - detail of the challenge.
+   * @returns A promise that resolves created challenge.
+   */
   @Post('challenges')
   @Version('1')
-  async createChallenge(@Body('id') id: string): Promise<ChallengeDto> {
-    return await this.challengeService.findChallengeById(id);
+  @ApiBody({ type: CreateChallengeDto })
+  async createChallenge(
+    @Body() challengeBody: CreateChallengeDto,
+  ): Promise<ChallengeDto> {
+    return await this.challengeService.createChallenge(challengeBody);
   }
 }

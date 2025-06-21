@@ -1,5 +1,5 @@
 import { IsOptional, IsString, IsInt, Min, ValidateIf } from "class-validator";
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiPropertyOptional } from "@nestjs/swagger";
 
 import { TransformNumber } from "../pipe/transform-number.pipe";
 
@@ -10,7 +10,7 @@ export class FetchItemsDtoReqBody {
   /**
    * Optional search string to filter items by name or other attributes.
    */
-  @ApiPropertyOptional({ description: 'Search string to filter items' })
+  @ApiPropertyOptional({ description: "Search string to filter items" })
   @IsOptional()
   @ValidateIf((_, value) => Boolean(value))
   @IsString()
@@ -43,4 +43,24 @@ export class FetchItemsDtoReqBody {
   @IsInt()
   @Min(1)
   pageSize = 10;
+
+  /**
+   * User location latitude.
+   */
+  @ApiPropertyOptional({ default: 0 })
+  @IsOptional()
+  @TransformNumber()
+  @IsInt()
+  @Min(0)
+  userLat = 0;
+
+  /**
+   * User location longtitude.
+   */
+  @ApiPropertyOptional({ default: 0 })
+  @IsOptional()
+  @TransformNumber()
+  @IsInt()
+  @Min(0)
+  userLng = 0;
 }
