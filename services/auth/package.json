@@ -1,5 +1,5 @@
 {
-  "name": "habit",
+  "name": "auth",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -35,8 +35,5 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  },
-  "prisma": {
-    "seed": "ts-node prisma/seed.ts"
   }
 }
